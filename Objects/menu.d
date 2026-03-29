@@ -1,4 +1,5 @@
 .\objects\menu.o: System\menu.c
+.\objects\menu.o: .\User\headfile.h
 .\objects\menu.o: .\Start\stm32f10x.h
 .\objects\menu.o: .\Start\core_cm3.h
 .\objects\menu.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -30,5 +31,15 @@
 .\objects\menu.o: .\Library\misc.h
 .\objects\menu.o: .\Hardware\OLED.h
 .\objects\menu.o: .\Hardware\OLED_Data.h
-.\objects\menu.o: System\menu.h
+.\objects\menu.o: .\System\Timer.h
 .\objects\menu.o: .\Hardware\Key.h
+.\objects\menu.o: .\System\PID.h
+.\objects\menu.o: .\System\menu.h
+.\objects\menu.o: .\System\Delay.h
+.\objects\menu.o: .\Hardware\MyI2C.h
+.\objects\menu.o: .\Hardware\MPU6050.h
+.\objects\menu.o: .\Hardware\Encoder.h
+.\objects\menu.o: .\Hardware\PWM.h
+.\objects\menu.o: .\Hardware\Motor.h
+.\objects\menu.o: .\Hardware\quaternion.h
+.\objects\menu.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

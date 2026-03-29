@@ -1,4 +1,5 @@
 .\objects\main.o: User\main.c
+.\objects\main.o: User\headfile.h
 .\objects\main.o: .\Start\stm32f10x.h
 .\objects\main.o: .\Start\core_cm3.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -28,11 +29,17 @@
 .\objects\main.o: .\Library\stm32f10x_usart.h
 .\objects\main.o: .\Library\stm32f10x_wwdg.h
 .\objects\main.o: .\Library\misc.h
-.\objects\main.o: .\System\Delay.h
 .\objects\main.o: .\Hardware\OLED.h
 .\objects\main.o: .\Hardware\OLED_Data.h
 .\objects\main.o: .\System\Timer.h
+.\objects\main.o: .\Hardware\Key.h
+.\objects\main.o: .\System\PID.h
+.\objects\main.o: .\System\menu.h
+.\objects\main.o: .\System\Delay.h
+.\objects\main.o: .\Hardware\MyI2C.h
 .\objects\main.o: .\Hardware\MPU6050.h
+.\objects\main.o: .\Hardware\Encoder.h
+.\objects\main.o: .\Hardware\PWM.h
+.\objects\main.o: .\Hardware\Motor.h
 .\objects\main.o: .\Hardware\quaternion.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\main.o: .\Hardware\Key.h

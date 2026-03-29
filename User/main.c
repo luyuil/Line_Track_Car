@@ -1,11 +1,4 @@
-#include "stm32f10x.h"                  // Device header
-#include "Delay.h"
-#include "OLED.h"
-#include "Timer.h"
-#include "MPU6050.h"
-#include "quaternion.h"  // 添加四元数头文件
-#include "Key.h"
-#include <math.h>
+#include "headfile.h"
 
 // 定义π常量
 #ifndef M_PI
@@ -16,8 +9,11 @@
 int16_t AX, AY, AZ, GX, GY, GZ;
 int16_t keynumber = 0;
 
-// 添加四元数欧拉角变量
-EulerAngle quat_euler_filtered;
+//// 添加四元数欧拉角变量
+//EulerAngle quat_euler_filtered;
+
+// 菜单状态声明
+MenuState current_menu = MENU_MAIN;
 
 int main(void)
 { 
@@ -27,43 +23,41 @@ int main(void)
 	Key_Init();
     MPU6050_Init();
     
-    // 初始化四元数算法
-    Quaternion_Init();
-    
-    // 设置零漂校准值（你的实测值）
-    Quaternion_SetOffsets(92, 7, 11);
-    
-    // 设置互补滤波系数（你的参数：0.01）
-    Quaternion_SetBeta(0.01f);
-    
-    // 设置滤波阈值（你的参数：0.08）
-    Quaternion_SetFilterThreshold(0.08f);
-    
-    OLED_Clear();
-    
+    OLED_Clear();    
     while (1)
     {
-        OLED_Clear();
-        //按键测试
-		OLED_ShowNum(0,0,keynumber,3,OLED_8X16);
-        OLED_Update(); 
-		
-		if(Key_Check(KEY_1,KEY_DOWN))
-		{
-			keynumber += 1;
+        // 非阻塞式菜单处理
+        switch(current_menu) {
+            case MENU_MAIN: {
+                int result = menu_MAIN();
+                if(result > 0) {
+                    current_menu = result;  // 切换到子菜单
+                }
+                break;
+            }
+			case MENU_TASK1: {
+                int result = menu_TASK1();
+                if(result > 0) {
+                    current_menu = result;  // 切换到子菜单
+                }
+                break;
+            }
+			case MENU_TASK2: {
+                int result = menu_TASK2();
+                if(result > 0) {
+                    current_menu = result;  // 切换到子菜单
+                }
+                break;
+            }
+			case MENU_TASK3: {
+                int result = menu_TASK3();
+                if(result > 0) {
+                    current_menu = result;  // 切换到子菜单
+                }
+                break;
+            }
 		}
-		if(Key_Check(KEY_2,KEY_DOWN))
-		{
-			keynumber -= 1;
-		}
-		if(Key_Check(KEY_3,KEY_DOWN))
-		{
-			keynumber += 10;
-		}
-		if(Key_Check(KEY_4,KEY_DOWN))
-		{
-			keynumber -= 10;
-		}
+		OLED_Update();
     }   
 }
 
@@ -77,8 +71,8 @@ void TIM1_UP_IRQHandler(void)
         // 读取MPU6050数据
         MPU6050_GetData(&AX, &AY, &AZ, &GX, &GY, &GZ);
         
-        // 更新四元数（集成了你的算法）
-        Quaternion_Update();
+//        // 更新四元数（集成了你的算法）
+//        Quaternion_Update();
         
         // 错误标志处理
         if (TIM_GetITStatus(TIM1, TIM_IT_Update) == SET)
