@@ -40,6 +40,8 @@
 .\objects\main.o: .\Hardware\MPU6050.h
 .\objects\main.o: .\Hardware\Encoder.h
 .\objects\main.o: .\Hardware\PWM.h
+.\objects\main.o: .\User\headfile.h
+.\objects\main.o: .\Hardware\PWM.h
 .\objects\main.o: .\Hardware\Motor.h
 .\objects\main.o: .\Hardware\quaternion.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
