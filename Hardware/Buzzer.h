@@ -3,6 +3,7 @@
 
 #include "headfile.h"
 
-
+void Buzzer_Init(void);
+void Buzzer_start(void);
 
 #endif

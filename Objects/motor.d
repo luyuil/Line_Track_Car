@@ -42,5 +42,9 @@
 .\objects\motor.o: .\Hardware\Encoder.h
 .\objects\motor.o: .\Hardware\PWM.h
 .\objects\motor.o: .\Hardware\Motor.h
-.\objects\motor.o: .\Hardware\quaternion.h
-.\objects\motor.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\motor.o: .\Hardware\Buzzer.h
+.\objects\motor.o: .\User\headfile.h
+.\objects\motor.o: .\Hardware\Buzzer.h
+.\objects\motor.o: .\Hardware\infrared.h
+.\objects\motor.o: .\User\headfile.h
+.\objects\motor.o: .\Hardware\infrared.h

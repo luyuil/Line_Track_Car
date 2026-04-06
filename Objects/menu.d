@@ -43,5 +43,9 @@
 .\objects\menu.o: .\User\headfile.h
 .\objects\menu.o: .\Hardware\PWM.h
 .\objects\menu.o: .\Hardware\Motor.h
-.\objects\menu.o: .\Hardware\quaternion.h
-.\objects\menu.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\menu.o: .\Hardware\Buzzer.h
+.\objects\menu.o: .\User\headfile.h
+.\objects\menu.o: .\Hardware\Buzzer.h
+.\objects\menu.o: .\Hardware\infrared.h
+.\objects\menu.o: .\User\headfile.h
+.\objects\menu.o: .\Hardware\infrared.h

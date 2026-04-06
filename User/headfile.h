@@ -11,4 +11,5 @@
 #include "Encoder.h"
 #include "PWM.h"
 #include "Motor.h"
-#include "quaternion.h"
+#include "Buzzer.h"
+#include "infrared.h"

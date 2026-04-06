@@ -8,11 +8,18 @@
 // 菜单状态声明
 MenuState current_menu = MENU_MAIN;
 
+// 中断任务
 int8_t number = 0;
+int8_t count = 2;
+int8_t count1 = 4;
+
 int16_t left_speed = 0;
 int16_t right_speed = 0;
 int16_t left_location = 0;
 int16_t right_location = 0;
+
+// 循迹状态
+uint8_t track_num = 0;
 
 int main(void)
 { 
@@ -24,6 +31,8 @@ int main(void)
 	Motor_Init();
 	Encoder1_Init();
 	Encoder2_Init();
+	Buzzer_Init();
+	Infrared_Init();
     
     OLED_Clear();    
     while (1)
@@ -62,10 +71,11 @@ int main(void)
 //		OLED_Update();
 		
 		// 电机和编码器测试
-		OLED_ShowNum(0,0,left_speed,3,OLED_8X16);
-		OLED_ShowNum(0,16,right_speed,3,OLED_8X16);
-		OLED_ShowNum(0,32,left_location,5,OLED_8X16);
-		OLED_ShowNum(0,48,right_location,5,OLED_8X16);
+		OLED_ShowNum(0,0,left_speed,3,OLED_6X8);
+		OLED_ShowNum(0,8,right_speed,3,OLED_6X8);
+		OLED_ShowNum(0,16,left_location,5,OLED_6X8);
+		OLED_ShowNum(0,24,right_location,5,OLED_6X8);
+		OLED_ShowNum(0,32,track_num,5,OLED_6X8);
 		OLED_Update();
 		Motor1_SetPWM(50);
 		Motor2_SetPWM(50);
@@ -90,6 +100,19 @@ void TIM1_UP_IRQHandler(void)
 			right_location += right_speed;
 		}
 		
+		count ++;
+		if(count >= 12)
+		{
+			count = 2;
+			Buzzer_start();
+		}
+		
+		count1 ++;
+		if(count1 >= 14)
+		{
+			count1 = 4;
+			track_num = Infrared_ReadAll();
+		}
         // 错误标志处理
         if (TIM_GetITStatus(TIM1, TIM_IT_Update) == SET)
         {
