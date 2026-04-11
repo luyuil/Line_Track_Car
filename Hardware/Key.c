@@ -45,14 +45,14 @@ uint8_t Key_GetState(uint8_t n)
 	}
 	else if (n == KEY_3)
 	{
-		if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_14) == 0)
+		if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_15) == 0)
 		{
 			return KEY_PRESSED;
 		}
 	}
 	else if (n == KEY_4)
 	{
-		if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_15) == 0)
+		if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_14) == 0)
 		{
 			return KEY_PRESSED;
 		}

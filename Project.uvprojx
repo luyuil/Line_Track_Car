@@ -694,6 +694,16 @@
               <FileType>5</FileType>
               <FilePath>.\System\PID.h</FilePath>
             </File>
+            <File>
+              <FileName>imu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\imu.c</FilePath>
+            </File>
+            <File>
+              <FileName>imu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\imu.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
