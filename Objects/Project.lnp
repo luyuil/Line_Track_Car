@@ -29,6 +29,7 @@
 ".\objects\timer.o"
 ".\objects\menu.o"
 ".\objects\pid.o"
+".\objects\imu.o"
 ".\objects\oled.o"
 ".\objects\oled_data.o"
 ".\objects\mpu6050.o"

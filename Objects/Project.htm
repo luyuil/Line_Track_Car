@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Sat Apr 11 23:17:59 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Sun Apr 12 21:35:02 2026
 <BR><P>
 <H3>Maximum Stack Usage =        220 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -731,14 +731,14 @@ Global Symbols
 <P><STRONG><a name="[77]"></a>OLED_ShowFloatNum</STRONG> (Thumb, 210 bytes, Stack size 72 bytes, oled.o(i.OLED_ShowFloatNum))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = OLED_ShowFloatNum &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_ShowImage &rArr; OLED_ClearArea
 </UL>
-<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowNum
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowChar
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Pow
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_TASK3
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_TASK2
@@ -1024,7 +1024,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[99]"></a>menu_MAIN</STRONG> (Thumb, 250 bytes, Stack size 8 bytes, menu.o(i.menu_MAIN))
+<P><STRONG><a name="[99]"></a>menu_MAIN</STRONG> (Thumb, 264 bytes, Stack size 8 bytes, menu.o(i.menu_MAIN))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = menu_MAIN &rArr; OLED_ShowString &rArr; OLED_ShowChar &rArr; OLED_ShowImage &rArr; OLED_ClearArea
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowString
@@ -1034,7 +1034,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9a]"></a>menu_TASK1</STRONG> (Thumb, 860 bytes, Stack size 32 bytes, menu.o(i.menu_TASK1))
+<P><STRONG><a name="[9a]"></a>menu_TASK1</STRONG> (Thumb, 862 bytes, Stack size 32 bytes, menu.o(i.menu_TASK1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 220<LI>Call Chain = menu_TASK1 &rArr; OLED_ShowFloatNum &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_ShowImage &rArr; OLED_ClearArea
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
@@ -1049,7 +1049,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9b]"></a>menu_TASK2</STRONG> (Thumb, 860 bytes, Stack size 32 bytes, menu.o(i.menu_TASK2))
+<P><STRONG><a name="[9b]"></a>menu_TASK2</STRONG> (Thumb, 862 bytes, Stack size 32 bytes, menu.o(i.menu_TASK2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 220<LI>Call Chain = menu_TASK2 &rArr; OLED_ShowFloatNum &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_ShowImage &rArr; OLED_ClearArea
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
@@ -1064,7 +1064,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9c]"></a>menu_TASK3</STRONG> (Thumb, 860 bytes, Stack size 32 bytes, menu.o(i.menu_TASK3))
+<P><STRONG><a name="[9c]"></a>menu_TASK3</STRONG> (Thumb, 862 bytes, Stack size 32 bytes, menu.o(i.menu_TASK3))
 <BR><BR>[Stack]<UL><LI>Max Depth = 220<LI>Call Chain = menu_TASK3 &rArr; OLED_ShowFloatNum &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_ShowImage &rArr; OLED_ClearArea
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
@@ -1149,18 +1149,18 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a4]"></a>__fpl_dnaninf</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, dnaninf.o(x$fpl$dnaninf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dmul
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
+<BR><BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dfixu
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_d2f
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dmul
 </UL>
 
 <P><STRONG><a name="[a7]"></a>__fpl_dretinf</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dretinf.o(x$fpl$dretinf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dmul
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
+<BR><BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_f2d
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dmul
 </UL>
 
 <P><STRONG><a name="[78]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf))

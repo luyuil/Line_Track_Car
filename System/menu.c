@@ -66,9 +66,10 @@ int menu_MAIN(void)
 	{
 		//显示初始菜单
 		OLED_Clear();
-		OLED_ShowString(6,0,"task1",OLED_6X8);
-		OLED_ShowString(6,8,"task2",OLED_6X8);
-		OLED_ShowString(6,16,"task3",OLED_6X8);
+		OLED_ShowString(0,0,"=====MAIN====",OLED_6X8);
+		OLED_ShowString(6,8,"task1",OLED_6X8);
+		OLED_ShowString(6,16,"task2",OLED_6X8);
+		OLED_ShowString(6,24,"task3",OLED_6X8);
 		
 		//使用上次保存的选择位置
 		MAIN.flag = MAIN.last_selection;
@@ -81,12 +82,12 @@ int menu_MAIN(void)
 	if(Key_Check(KEY_1, KEY_DOWN))
 	{
 		MAIN.flag ++;
-		if(MAIN.flag == 3)MAIN.flag = 0;
+		if(MAIN.flag == 4)MAIN.flag = 1;
 	}
 	if(Key_Check(KEY_2, KEY_DOWN))
 	{
 		MAIN.flag --;
-		if(MAIN.flag < 0)MAIN.flag = 2;
+		if(MAIN.flag < 1)MAIN.flag = 3;
 	}
 	//按键3按下进入子菜单
 	if(Key_Check(KEY_3, KEY_DOWN))
@@ -146,7 +147,7 @@ int menu_TASK1(void)
 		{
 			TASK1.last_selection = TASK1.flag;
 			//显示编辑状态
-			OLED_ShowString(0,80,"E",OLED_6X8);
+			OLED_ShowString(80,0,"E",OLED_6X8);
 		}
 	}
 	//选择状态s
@@ -191,7 +192,7 @@ int menu_TASK1(void)
 		if(Key_Check(KEY_3, KEY_DOWN))
 		{
 			TASK1.last_selection = 0;
-			OLED_ShowString(0,80," ",OLED_6X8);
+			OLED_ShowString(80,0," ",OLED_6X8);
 		}
 	}
 	
@@ -250,7 +251,7 @@ int menu_TASK2(void)
 		{
 			TASK2.last_selection = TASK2.flag;
 			//显示编辑状态
-			OLED_ShowString(0,80,"E",OLED_6X8);
+			OLED_ShowString(80,0,"E",OLED_6X8);
 		}
 	}
 	//选择状态s
@@ -295,7 +296,7 @@ int menu_TASK2(void)
 		if(Key_Check(KEY_3, KEY_DOWN))
 		{
 			TASK2.last_selection = 0;
-			OLED_ShowString(0,80," ",OLED_6X8);
+			OLED_ShowString(80,0," ",OLED_6X8);
 		}
 	}
 	
@@ -354,7 +355,7 @@ int menu_TASK3(void)
 		{
 			TASK3.last_selection = TASK3.flag;
 			//显示编辑状态
-			OLED_ShowString(0,80,"E",OLED_6X8);
+			OLED_ShowString(80,0,"E",OLED_6X8);
 		}
 	}
 	//选择状态s
@@ -399,7 +400,7 @@ int menu_TASK3(void)
 		if(Key_Check(KEY_3, KEY_DOWN))
 		{
 			TASK3.last_selection = 0;
-			OLED_ShowString(0,80," ",OLED_6X8);
+			OLED_ShowString(80,0," ",OLED_6X8);
 		}
 	}
 	

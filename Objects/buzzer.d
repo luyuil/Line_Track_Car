@@ -49,3 +49,6 @@
 .\objects\buzzer.o: .\Hardware\infrared.h
 .\objects\buzzer.o: .\User\headfile.h
 .\objects\buzzer.o: .\Hardware\infrared.h
+.\objects\buzzer.o: .\System\imu.h
+.\objects\buzzer.o: .\User\headfile.h
+.\objects\buzzer.o: .\System\imu.h

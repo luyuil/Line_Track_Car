@@ -49,3 +49,6 @@
 .\objects\menu.o: .\Hardware\infrared.h
 .\objects\menu.o: .\User\headfile.h
 .\objects\menu.o: .\Hardware\infrared.h
+.\objects\menu.o: .\System\imu.h
+.\objects\menu.o: .\User\headfile.h
+.\objects\menu.o: .\System\imu.h

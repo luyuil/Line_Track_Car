@@ -48,3 +48,6 @@
 .\objects\motor.o: .\Hardware\infrared.h
 .\objects\motor.o: .\User\headfile.h
 .\objects\motor.o: .\Hardware\infrared.h
+.\objects\motor.o: .\System\imu.h
+.\objects\motor.o: .\User\headfile.h
+.\objects\motor.o: .\System\imu.h
