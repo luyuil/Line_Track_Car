@@ -52,3 +52,5 @@
 .\objects\imu.o: .\System\imu.h
 .\objects\imu.o: .\User\headfile.h
 .\objects\imu.o: .\System\imu.h
+.\objects\imu.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\imu.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

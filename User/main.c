@@ -5,21 +5,14 @@
 #define M_PI 3.14159265358979323846f
 #endif
 
+// mpu6050六轴数据
+int16_t gx,gy,gz,ax,ay,az = 0;
+float yaw = 0;
 // 菜单状态声明
 MenuState current_menu = MENU_MAIN;
 
 // 中断任务
-//int8_t number = 0;
-//int8_t count = 2;
-//int8_t count1 = 4;
-
-//int16_t left_speed = 0;
-//int16_t right_speed = 0;
-//int16_t left_location = 0;
-//int16_t right_location = 0;
-
-//// 循迹状态
-//uint8_t track_num = 0;
+int16_t Count = 0;
 
 int main(void)
 { 
@@ -68,20 +61,23 @@ int main(void)
                 break;
             }
 		}
-		OLED_Update();
 		
 		// 电机和编码器测试
-//		OLED_ShowNum(0,0,left_speed,3,OLED_6X8);
-//		OLED_ShowNum(0,8,right_speed,3,OLED_6X8);
-//		OLED_ShowNum(0,16,left_location,5,OLED_6X8);
-//		OLED_ShowNum(0,24,right_location,5,OLED_6X8);
-//		OLED_ShowNum(0,32,track_num,5,OLED_6X8);
-//		OLED_Update();
-//		Motor1_SetPWM(50);
-//		Motor2_SetPWM(50);
+		OLED_ShowNum(0,32,gx,4,OLED_6X8);
+		OLED_ShowNum(30,32,ax,4,OLED_6X8);
+		OLED_ShowNum(0,40,gy,4,OLED_6X8);
+		OLED_ShowNum(30,40,ay,4,OLED_6X8);
+		OLED_ShowNum(0,48,gz,4,OLED_6X8);
+		OLED_ShowNum(30,48,az,4,OLED_6X8);
+		OLED_ShowString(0,56,"yaw:",OLED_6X8);
+		OLED_ShowFloatNum(24,56,yaw,4,3,OLED_6X8);
+		OLED_Update();
+//		Motor1_SetPWM(80);
+//		Motor2_SetPWM(80);
     }   
 }
 
+// 1ms中断
 void TIM1_UP_IRQHandler(void)
 {
     if (TIM_GetITStatus(TIM1, TIM_IT_Update) == SET)
@@ -89,31 +85,12 @@ void TIM1_UP_IRQHandler(void)
         TIM_ClearITPendingBit(TIM1, TIM_IT_Update);
         //非阻塞按键
 		Key_Tick();
-        
-		// 测试代码
-//		number ++;
-//		if(number >= 10)
-//		{
-//			number = 0;
-//			left_speed = Encoder1_Get();
-//			right_speed = Encoder2_Get();
-//			left_location += left_speed;
-//			right_location += right_speed;
-//		}
-//		
-//		count ++;
-//		if(count >= 12)
-//		{
-//			count = 2;
-//			Buzzer_start();
-//		}
-//		
-//		count1 ++;
-//		if(count1 >= 14)
-//		{
-//			count1 = 4;
-//			track_num = Infrared_ReadAll();
-//		}
+        MPU6050_GetData(&ax,&ay,&az,&gx,&gy,&gz);	
+		Count ++;
+		if(Count <= 2000)
+		{
+			yaw += gz;
+		}
 		
         // 错误标志处理
         if (TIM_GetITStatus(TIM1, TIM_IT_Update) == SET)
