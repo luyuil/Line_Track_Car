@@ -37,6 +37,10 @@
 .\objects\infrared.o: .\System\menu.h
 .\objects\infrared.o: .\System\Delay.h
 .\objects\infrared.o: .\Hardware\MyI2C.h
+.\objects\infrared.o: .\User\headfile.h
+.\objects\infrared.o: .\Hardware\MyI2C.h
+.\objects\infrared.o: .\Hardware\MPU6050.h
+.\objects\infrared.o: .\User\headfile.h
 .\objects\infrared.o: .\Hardware\MPU6050.h
 .\objects\infrared.o: .\Hardware\Encoder.h
 .\objects\infrared.o: .\Hardware\PWM.h

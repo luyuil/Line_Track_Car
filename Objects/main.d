@@ -37,6 +37,10 @@
 .\objects\main.o: .\System\menu.h
 .\objects\main.o: .\System\Delay.h
 .\objects\main.o: .\Hardware\MyI2C.h
+.\objects\main.o: .\User\headfile.h
+.\objects\main.o: .\Hardware\MyI2C.h
+.\objects\main.o: .\Hardware\MPU6050.h
+.\objects\main.o: .\User\headfile.h
 .\objects\main.o: .\Hardware\MPU6050.h
 .\objects\main.o: .\Hardware\Encoder.h
 .\objects\main.o: .\Hardware\PWM.h

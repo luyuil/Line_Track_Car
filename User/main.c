@@ -6,7 +6,7 @@
 #endif
 
 // mpu6050六轴数据
-int16_t gx,gy,gz,ax,ay,az = 0;
+int16_t gx,gy,gz,ax,ay,az;
 float yaw = 0;
 // 菜单状态声明
 MenuState current_menu = MENU_MAIN;
@@ -63,12 +63,12 @@ int main(void)
 		}
 		
 		// 电机和编码器测试
-		OLED_ShowNum(0,32,gx,4,OLED_6X8);
-		OLED_ShowNum(30,32,ax,4,OLED_6X8);
-		OLED_ShowNum(0,40,gy,4,OLED_6X8);
-		OLED_ShowNum(30,40,ay,4,OLED_6X8);
-		OLED_ShowNum(0,48,gz,4,OLED_6X8);
-		OLED_ShowNum(30,48,az,4,OLED_6X8);
+		OLED_ShowSignedNum(0,32,ax,5,OLED_6X8);
+		OLED_ShowSignedNum(50,32,gx,5,OLED_6X8);
+		OLED_ShowSignedNum(0,40,ay,5,OLED_6X8);
+		OLED_ShowSignedNum(50,40,gy,5,OLED_6X8);
+		OLED_ShowSignedNum(0,48,az,5,OLED_6X8);
+		OLED_ShowSignedNum(50,48,gz,5,OLED_6X8);
 		OLED_ShowString(0,56,"yaw:",OLED_6X8);
 		OLED_ShowFloatNum(24,56,yaw,4,3,OLED_6X8);
 		OLED_Update();
@@ -85,7 +85,9 @@ void TIM1_UP_IRQHandler(void)
         TIM_ClearITPendingBit(TIM1, TIM_IT_Update);
         //非阻塞按键
 		Key_Tick();
-        MPU6050_GetData(&ax,&ay,&az,&gx,&gy,&gz);	
+        
+		MPU6050_GetData(&ax,&ay,&az,&gx,&gy,&gz);	
+		
 		Count ++;
 		if(Count <= 2000)
 		{

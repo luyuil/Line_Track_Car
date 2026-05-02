@@ -37,6 +37,10 @@
 .\objects\buzzer.o: .\System\menu.h
 .\objects\buzzer.o: .\System\Delay.h
 .\objects\buzzer.o: .\Hardware\MyI2C.h
+.\objects\buzzer.o: .\User\headfile.h
+.\objects\buzzer.o: .\Hardware\MyI2C.h
+.\objects\buzzer.o: .\Hardware\MPU6050.h
+.\objects\buzzer.o: .\User\headfile.h
 .\objects\buzzer.o: .\Hardware\MPU6050.h
 .\objects\buzzer.o: .\Hardware\Encoder.h
 .\objects\buzzer.o: .\Hardware\PWM.h

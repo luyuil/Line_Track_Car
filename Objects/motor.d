@@ -38,6 +38,10 @@
 .\objects\motor.o: .\System\menu.h
 .\objects\motor.o: .\System\Delay.h
 .\objects\motor.o: .\Hardware\MyI2C.h
+.\objects\motor.o: .\User\headfile.h
+.\objects\motor.o: .\Hardware\MyI2C.h
+.\objects\motor.o: .\Hardware\MPU6050.h
+.\objects\motor.o: .\User\headfile.h
 .\objects\motor.o: .\Hardware\MPU6050.h
 .\objects\motor.o: .\Hardware\Encoder.h
 .\objects\motor.o: .\Hardware\PWM.h

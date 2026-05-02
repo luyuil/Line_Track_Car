@@ -36,36 +36,6 @@ uint8_t MPU6050_ReadReg(uint8_t RegAddress)
 	return Data;
 }
 
-void MPU6050_ReadRegs(uint8_t RegAddress, uint8_t *DataArray, uint8_t Count)
-{
-	uint8_t i;
-	
-	MyI2C_Start();
-	MyI2C_SendByte(MPU6050_ADDRESS);
-	MyI2C_ReceiveAck();
-	MyI2C_SendByte(RegAddress);
-	MyI2C_ReceiveAck();
-	
-	MyI2C_Start();
-	MyI2C_SendByte(MPU6050_ADDRESS | 0x01);
-	MyI2C_ReceiveAck();
-	for(i = 0; i < Count; i ++)
-	{
-		DataArray[i] = MyI2C_ReceiveByte();
-		if(i < Count - 1)
-		{
-			MyI2C_SendAck(0);
-		}
-		else
-		{
-			MyI2C_SendAck(1);
-		}
-	}
-	MyI2C_Stop();
-	
-
-}
-
 void MPU6050_Init(void)
 {
 	MyI2C_Init();
@@ -82,47 +52,32 @@ uint8_t MPU6050_GetID(void)
 	return MPU6050_ReadReg(MPU6050_WHO_AM_I);
 }
 
-//void MPU6050_GetData(int16_t *AccX, int16_t *AccY, int16_t *AccZ, 
-//						int16_t *GyroX, int16_t *GyroY, int16_t *GyroZ)
-//{
-//	uint8_t DataH, DataL;
-//	
-//	DataH = MPU6050_ReadReg(MPU6050_ACCEL_XOUT_H);
-//	DataL = MPU6050_ReadReg(MPU6050_ACCEL_XOUT_L);
-//	*AccX = (DataH << 8) | DataL;
-//	
-//	DataH = MPU6050_ReadReg(MPU6050_ACCEL_YOUT_H);
-//	DataL = MPU6050_ReadReg(MPU6050_ACCEL_YOUT_L);
-//	*AccY = (DataH << 8) | DataL;
-//	
-//	DataH = MPU6050_ReadReg(MPU6050_ACCEL_ZOUT_H);
-//	DataL = MPU6050_ReadReg(MPU6050_ACCEL_ZOUT_L);
-//	*AccZ = (DataH << 8) | DataL;
-//	
-//	DataH = MPU6050_ReadReg(MPU6050_GYRO_XOUT_H);
-//	DataL = MPU6050_ReadReg(MPU6050_GYRO_XOUT_L);
-//	*GyroX = (DataH << 8) | DataL;
-//	
-//	DataH = MPU6050_ReadReg(MPU6050_GYRO_YOUT_H);
-//	DataL = MPU6050_ReadReg(MPU6050_GYRO_YOUT_L);
-//	*GyroY = (DataH << 8) | DataL;
-//	
-//	DataH = MPU6050_ReadReg(MPU6050_GYRO_ZOUT_H);
-//	DataL = MPU6050_ReadReg(MPU6050_GYRO_ZOUT_L);
-//	*GyroZ = (DataH << 8) | DataL;
-//}
 void MPU6050_GetData(int16_t *AccX, int16_t *AccY, int16_t *AccZ, 
 						int16_t *GyroX, int16_t *GyroY, int16_t *GyroZ)
 {
-	uint8_t Data[14];
+	uint8_t DataH, DataL;
 	
-	MPU6050_ReadRegs(MPU6050_ACCEL_XOUT_H, Data, 14);
+	DataH = MPU6050_ReadReg(MPU6050_ACCEL_XOUT_H);
+	DataL = MPU6050_ReadReg(MPU6050_ACCEL_XOUT_L);
+	*AccX = (DataH << 8) | DataL;
 	
-	*AccX = (Data[0] << 8) | Data[1];
-	*AccY = (Data[2] << 8) | Data[3];
-	*AccZ = (Data[4] << 8) | Data[5];
+	DataH = MPU6050_ReadReg(MPU6050_ACCEL_YOUT_H);
+	DataL = MPU6050_ReadReg(MPU6050_ACCEL_YOUT_L);
+	*AccY = (DataH << 8) | DataL;
 	
-	*GyroX = (Data[8] << 8) | Data[9];
-	*GyroY = (Data[10] << 8) | Data[11];
-	*GyroZ = (Data[12] << 8) | Data[13];
+	DataH = MPU6050_ReadReg(MPU6050_ACCEL_ZOUT_H);
+	DataL = MPU6050_ReadReg(MPU6050_ACCEL_ZOUT_L);
+	*AccZ = (DataH << 8) | DataL;
+	
+	DataH = MPU6050_ReadReg(MPU6050_GYRO_XOUT_H);
+	DataL = MPU6050_ReadReg(MPU6050_GYRO_XOUT_L);
+	*GyroX = (DataH << 8) | DataL;
+	
+	DataH = MPU6050_ReadReg(MPU6050_GYRO_YOUT_H);
+	DataL = MPU6050_ReadReg(MPU6050_GYRO_YOUT_L);
+	*GyroY = (DataH << 8) | DataL;
+	
+	DataH = MPU6050_ReadReg(MPU6050_GYRO_ZOUT_H);
+	DataL = MPU6050_ReadReg(MPU6050_GYRO_ZOUT_L);
+	*GyroZ = (DataH << 8) | DataL;
 }
