@@ -7,7 +7,7 @@
 
 // mpu6050六轴数据
 int16_t gx,gy,gz,ax,ay,az;
-float yaw = 0;
+
 // 菜单状态声明
 MenuState current_menu = MENU_MAIN;
 
@@ -61,17 +61,11 @@ int main(void)
                 break;
             }
 		}
+		OLED_ShowString(0,56,"yaw:",OLED_6X8);
+		OLED_ShowFloatNum(24,56,imu_angle.yaw,3,2,OLED_6X8);
+		OLED_Update();
 		
 		// 电机和编码器测试
-		OLED_ShowSignedNum(0,32,ax,5,OLED_6X8);
-		OLED_ShowSignedNum(50,32,gx,5,OLED_6X8);
-		OLED_ShowSignedNum(0,40,ay,5,OLED_6X8);
-		OLED_ShowSignedNum(50,40,gy,5,OLED_6X8);
-		OLED_ShowSignedNum(0,48,az,5,OLED_6X8);
-		OLED_ShowSignedNum(50,48,gz,5,OLED_6X8);
-		OLED_ShowString(0,56,"yaw:",OLED_6X8);
-		OLED_ShowFloatNum(24,56,yaw,4,3,OLED_6X8);
-		OLED_Update();
 //		Motor1_SetPWM(80);
 //		Motor2_SetPWM(80);
     }   
@@ -86,12 +80,16 @@ void TIM1_UP_IRQHandler(void)
         //非阻塞按键
 		Key_Tick();
         
-		MPU6050_GetData(&ax,&ay,&az,&gx,&gy,&gz);	
-		
-		Count ++;
-		if(Count <= 2000)
+		// mpu6050读取大概要2ms以上的时间，所有定一个5ms来确保读取数据不丢失
+		static uint8_t imu_tick = 0;
+		if(++imu_tick >= 5)
 		{
-			yaw += gz;
+			imu_tick = 0;
+			// 六轴数据读取
+			MPU6050_GetData(&ax,&ay,&az,&gx,&gy,&gz);
+			// 四元数解算yaw
+			gyro_offset_get();
+			imu_get_angle();
 		}
 		
         // 错误标志处理

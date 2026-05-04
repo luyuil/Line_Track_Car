@@ -1,0 +1,33 @@
+# Keil MDK 项目文件
+*.uvguix.*
+*.uvoptx
+*.uvprojx
+
+# Keil MDK 构建输出
+*.build_log.htm
+*.lnp
+*.lst
+*.map
+*.dep
+
+# Keil MDK 用户特定文件
+*.bak
+*.log
+*.plg
+*.mpu
+*.tra
+*.crf
+*.d
+*.axf
+*.iex
+
+# 编译输出文件
+*.o
+*.d
+*.i
+*.s
+
+# 特定版本文件
+1.uvguix.*
+1.uvoptx
+1.uvprojx

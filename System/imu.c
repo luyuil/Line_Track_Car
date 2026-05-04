@@ -5,8 +5,8 @@
 //-------------------------------------------------------------------------------------------------------------------
 //  宏定义
 //-------------------------------------------------------------------------------------------------------------------
-float CYCLE_T                       =0.001f;                              // 三轴四元数采样周期
-#define DELTA_T                     0.0010055f                              // 六轴四元数采样时间
+float CYCLE_T                       =0.005f;                                // 三轴四元数采样周期
+#define DELTA_T                     0.005f                                  // 六轴四元数采样时间
 #define IMU_ALPHA                   0.3f                                    // 加速度低通滤波系数
 #define GYRO_STATIC_THRESHOLD       30.0f                                   // 原始角速度静止阈值
 #define GYRO_STATIC_CHECK_COUNT      100                                    // 采集前静止判定次数
@@ -24,7 +24,7 @@ float             gyro_drift_y = 91.23f;                                    // �
 float             gyro_drift_z = 9.23f;                                     // 陀螺仪 Z 轴零漂
 
 float             param_Kp = 0.0001f;                                       // 加速度计收敛速率比例增益
-float             param_Ki = -0.0000324f;                                   // 陀螺仪收敛速率积分增益
+float             param_Ki = - 0.0000324f;                                   // 陀螺仪收敛速率积分增益
 
 uint8_t             gyro_calibrate_flag = 1;                                  // 陀螺仪零漂采集触发标志
 uint8_t             gyro_offset_finished = 0;                                 // 零漂采集完成标志
@@ -130,10 +130,10 @@ void gyro_offset_get(void)
             }
             else
             {
-                gyro_calibrate_flag = 0;
-                gyro_offset_finished = 1;
+//                gyro_calibrate_flag = 0;
+//                gyro_offset_finished = 1;
                 gyro_static_check_count = 0;
-                gyro_offset_collecting = 0;
+//                gyro_offset_collecting = 0;
             }
 
             return;
@@ -281,7 +281,7 @@ void ICM_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az)
 //-------------------------------------------------------------------------------------------------------------------
 void ICM_getEulerianAngles(void)
 {
-    MPU6050_GetData(&ax,&ay,&az,&gx,&gy,&gz);
+    //MPU6050_GetData(&ax,&ay,&az,&gx,&gy,&gz);
 
     ICM_getValues();
     ICM_AHRSupdate(icm_data_t.gyro_x, icm_data_t.gyro_y, icm_data_t.gyro_z, icm_data_t.acc_x, icm_data_t.acc_y, icm_data_t.acc_z);
@@ -335,7 +335,7 @@ void ICM_getEulerianAngles(void)
 //-------------------------------------------------------------------------------------------------------------------
 void imu_transform_gyro(void)
 {
-    MPU6050_GetData(&ax,&ay,&az,&gx,&gy,&gz);
+    //MPU6050_GetData(&ax,&ay,&az,&gx,&gy,&gz);
 
     float gx_temp = (float)gx - gyro_drift_x;
     float gy_temp = (float)gy - gyro_drift_y;
@@ -346,9 +346,9 @@ void imu_transform_gyro(void)
     if (gy_temp < GYRO_DEADZONE && gy_temp > -GYRO_DEADZONE) gy_temp = 0.0f;
     if (gz_temp < GYRO_DEADZONE && gz_temp > -GYRO_DEADZONE) gz_temp = 0.0f;
 
-    float gx = mpu6050_gyro_transition(gx_temp/10*10) * PI / 180.0f;
-    float gy = mpu6050_gyro_transition(gy_temp/10*10) * PI / 180.0f;
-    float gz = mpu6050_gyro_transition(gz_temp/10*10) * PI / 180.0f;
+    float gx = mpu6050_gyro_transition(gx_temp) * PI / 180.0f;
+    float gy = mpu6050_gyro_transition(gy_temp) * PI / 180.0f;
+    float gz = mpu6050_gyro_transition(gz_temp) * PI / 180.0f;
 
     // 暂存当前三轴四元数
     float q0 = q_3dof[0];
@@ -388,10 +388,10 @@ void imu_transform_gyro(void)
 void imu_get_angle(void)
 {
     // 三轴四元数
-    imu_transform_gyro();
+    //imu_transform_gyro();
 
     // 六轴互补四元数
-    //ICM_getEulerianAngles();
+    ICM_getEulerianAngles();
 }
 
 //-------------------------------------------------------------------------------------------------------------------
