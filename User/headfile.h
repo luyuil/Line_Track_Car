@@ -1,5 +1,8 @@
 //该文件来放置头文件
+// 基础库
 #include "stm32f10x.h"                  // Device header
+
+// 自己的头文件
 #include "OLED.h"
 #include "Timer.h"
 #include "Key.h"
@@ -14,3 +17,4 @@
 #include "Buzzer.h"
 #include "infrared.h"
 #include "imu.h"
+#include "task1.h"

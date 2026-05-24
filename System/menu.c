@@ -34,9 +34,11 @@ PID_t line = {
 	.Target = 0.0,
 	.Actual = 0.0,
 	.Out = 0.0,
-	.Kp = 0.0,
-	.Ki = 0.0,
-	.Kd = 0.0,
+	.Kp = 0.63,
+	.Ki = 0.04,
+	.Kd = 0.33,
+	.OutMax = 70.0,
+	.OutMin = -70.0
 };
 
 // 循迹pid
@@ -47,6 +49,8 @@ PID_t track = {
 	.Kp = 0.0,
 	.Ki = 0.0,
 	.Kd = 0.0,
+	.OutMax = 0.0,
+	.OutMin = 0.0
 };
 
 // 转向pid
@@ -57,6 +61,8 @@ PID_t turn = {
 	.Kp = 0.0,
 	.Ki = 0.0,
 	.Kd = 0.0,
+	.OutMax = 0.0,
+	.OutMin = 0.0
 };
 
 // 非阻塞主菜单
@@ -373,7 +379,7 @@ int menu_TASK3(void)
 				turn.Ki += 0.1;
 				OLED_ShowFloatNum(48,16,turn.Ki,3,2,OLED_6X8);
 			}
-			else if(TASK1.last_selection == 3)
+			else if(TASK3.last_selection == 3)
 			{
 				turn.Kd += 0.1;
 				OLED_ShowFloatNum(48,24,turn.Kd,3,2,OLED_6X8);

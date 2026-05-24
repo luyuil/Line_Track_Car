@@ -6,6 +6,8 @@ void Motor_Init(void)
 	//普通的GPIOB输出初始化
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);          // ← 新增：使能 AFIO 时钟
+    GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);      // ← 新增：关闭 JTAG，保留 SWD
     
     GPIO_InitTypeDef GPIO_InitStructure;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
@@ -21,7 +23,7 @@ void Motor_Init(void)
 	PWM_Init();
 }
 
-//设置一号电机PWM占空比和电机方向
+//设置一号电机PWM占空比和电机方向   左轮
 void Motor1_SetPWM(int8_t PWM)
 {
 	if (PWM >= 0)
@@ -38,7 +40,7 @@ void Motor1_SetPWM(int8_t PWM)
 	}
 }
 
-//设置二号电机PWM占空比和电机方向
+//设置二号电机PWM占空比和电机方向   右轮
 void Motor2_SetPWM(int8_t PWM)
 {
 	if (PWM >= 0)

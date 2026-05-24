@@ -48,7 +48,8 @@ int16_t Encoder1_Get(void)
 	int16_t Temp;
 	Temp = TIM_GetCounter(TIM3);
 	TIM_SetCounter(TIM3,0);
-	return Temp;
+	
+	return -Temp;
 }
 
 //2号电机编码器初始化
